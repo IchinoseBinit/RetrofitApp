@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.retrofitapp.data.model.Post;
+import com.example.retrofitapp.data.model.RegisterRequest;
 import com.example.retrofitapp.view.adapter.PostAdapter;
 
 
@@ -103,5 +104,28 @@ public class ApiClient {
 
         });
         return posts;
+    }
+
+    public void registerUser(){
+        RegisterRequest registerRequest = new RegisterRequest("Binit", "binit@gmail.com", "Binit123");
+        Call call = apiService.register(registerRequest);
+        Log.d("api call", "in data ");
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d("api called", "in response");
+                if (response.isSuccessful()) {
+
+                }
+
+            }
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                Log.d("on failure", t.toString());
+
+            }
+
+
+        });
     }
 }

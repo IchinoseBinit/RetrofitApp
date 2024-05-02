@@ -35,4 +35,13 @@
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="414dp" />
 
+    <Button
+        android:id="@+id/btnRegister"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register User"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="414dp" />
+
 </LinearLayout>

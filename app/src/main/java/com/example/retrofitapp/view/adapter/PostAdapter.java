@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.retrofitapp.R;
 import com.example.retrofitapp.data.model.Post;
 import com.example.retrofitapp.view.viewholder.PostViewHolder;
+import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -39,6 +41,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
 
         holder.txtViewName.setText(post.getTitle());
         holder.txtViewDescription.setText(post.getBody() );
+
+        // Placeholder for loading state
+        int placeholderResource = R.drawable.ic_launcher_background;
+        // Placeholder for error state
+        int errorResource = R.drawable.ic_launcher_foreground;
+
+        // Load image from a URL into the ImageView using Picasso
+        Picasso.get().
+                load(post.getImage()).
+//                Add Placeholder image (that loads when the image is not retrieved yet)
+                placeholder(placeholderResource).
+//                Add error image (that loads when the image fails to load)
+                error(errorResource).
+                into(holder.imgView);
     }
 
     @Override

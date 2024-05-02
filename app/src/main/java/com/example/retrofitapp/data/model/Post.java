@@ -15,6 +15,10 @@ public class Post {
     @SerializedName("body")
     private String body;
 
+    public String getImage() {
+        return "https://w7.pngwing.com/pngs/523/198/png-transparent-google-logo-google-search-google-play-google-text-logo-number-thumbnail.png";
+    }
+
     // Constructor
     public Post(int userId, int id, String title, String body) {
         this.userId = userId;

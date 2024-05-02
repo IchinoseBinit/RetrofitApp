@@ -2,6 +2,8 @@ package com.example.retrofitapp.data.utilities;
 
 import com.example.retrofitapp.data.model.Post;
 import com.example.retrofitapp.data.model.RegisterRequest;
+import com.example.retrofitapp.data.model.Teacher;
+import com.example.retrofitapp.data.model.TeacherRequest;
 
 import java.util.List;
 
@@ -20,6 +22,15 @@ public interface ApiService {
     @GET("posts")
     Call<List<Post>> getAllPosts();
 
-    @POST("register")
-    Call register(@Body RegisterRequest request);
+    @GET("api.php")
+    Call<List<Teacher>> getAllTeachers();
+
+    @POST("post.php")
+    Call<Object> register(@Body RegisterRequest request);
+
+    @POST("post.php")
+    Call saveTeacher(@Body TeacherRequest request);
+
+    @POST("login.php")
+    Call login();
 }

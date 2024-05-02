@@ -8,28 +8,28 @@ public class RegisterRequest {
     private String name;
 
 
-    @SerializedName("email")
-    private String email;
+    @SerializedName("location")
+    private String location;
 
-    @SerializedName("password")
-    private String password;
+    @SerializedName("teacherCount")
+    private int teachers;
 
 
-    public RegisterRequest(String name, String email, String password) {
+    public RegisterRequest(String name, String location, int teachers) {
         this.name = name;
-        this.email = email;
-        this.password = password;
+        this.location = location;
+        this.teachers = teachers;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLocation() {
+        return location;
     }
 
-    public String getPassword() {
-        return password;
+    public int getTeachers() {
+        return teachers;
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.retrofitapp.data.model.Post;
 import com.example.retrofitapp.data.model.RegisterRequest;
+import com.example.retrofitapp.data.model.TeacherRequest;
 import com.example.retrofitapp.view.adapter.PostAdapter;
 
 
@@ -23,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     public Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com")
+            .baseUrl("https://jsonplaceholder.typicode.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
@@ -47,6 +48,8 @@ public class ApiClient {
                         System.out.println("-----Error");
                         System.out.println(ex.toString());
                     }
+                } else {
+
                 }
             }
             @Override
@@ -107,8 +110,33 @@ public class ApiClient {
     }
 
     public void registerUser(){
-        RegisterRequest registerRequest = new RegisterRequest("Binit", "binit@gmail.com", "Binit123");
-        Call call = apiService.register(registerRequest);
+        RegisterRequest registerRequest = new RegisterRequest("IIC", "Ktm", 3);
+        Call<Object> call = apiService.register(registerRequest);
+        Log.d("api call", "in data ");
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                Log.d("api called", "in response");
+                if (response.isSuccessful()) {
+//                    Log.d("api success", response.body().toString());
+                    System.out.println(response.body());
+                }
+
+
+            }
+            @Override
+            public void onFailure(Call call, Throwable t) {
+                Log.d("on failure", t.toString());
+
+            }
+
+
+        });
+    }
+
+    public void saveTeacher(){
+        TeacherRequest teacherRequest = new TeacherRequest("Binit", "Dharan", 2);
+        Call call = apiService.saveTeacher(teacherRequest);
         Log.d("api call", "in data ");
         call.enqueue(new Callback() {
             @Override
